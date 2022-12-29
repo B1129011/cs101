@@ -1,20 +1,15 @@
-#include<stdio.h>
-#include<conio.h>
-#include<math.h>
-
-int main()
-{
-    double PI=4.0f;
-    int j=2;
-
- for(double i=3.0f;i<=261315.0f;i+=2.0f) {
-    if (j%2)
-        PI += (4/i);
-    else    
-        PI -= (4/i);
-    j++;
-    printf("when i=%1.0f PI=%1.5f\n",i,PI);
+#include <stdio.h>
+int main() {
+    double PI = 0.0;
+    int i = 1;
+    for (i = 1; i<500000; i++) {
+        if (i & 1)
+            PI += 4.0/(2*i-1);
+        else
+            PI -= 4.0/(2*i-1);
+        if ((int) (PI*100000) == 314159)
+            break;
     }
-    printf("the minimum i = 261315");
-
+    printf("x=%d, PI=%.5f\n", 2*i-1, (double) (int) (PI*100000)/100000);
+    return 0;
 }
